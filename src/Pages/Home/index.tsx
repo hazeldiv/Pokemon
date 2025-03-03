@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
 
 
 type data = {
@@ -18,19 +19,17 @@ type data = {
 }
 
 const Home = () => {
+    const [id, setId] = useState(0)
     const [Data, setData] = useState<data>();
 
     const fetchInfo = () => {
-        return fetch("https://pokeapi.co/api/v2/pokemon")
+        return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${id}&limit=20`)
           .then((res) => res.json())
           .then((d) => setData(d))
     }
 
     useEffect(() => {
-        if (!Data) {
-            fetchInfo();
-        }
-        
+        fetchInfo()
     });
 
     return (
@@ -63,12 +62,12 @@ const Home = () => {
                                     <CardMedia
                                         component="img"
                                         height="250px"
-                                        image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png`}
+                                        image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(item.url)?.substring(34,(item.url).length-1)}.png`}
                                     >
                                     </CardMedia>
                                 </Card>
                                 <Card sx={{width: "100%", outline: "1px gray solid"}}>
-                                <Link to={`/Detail/${index+1}`}>
+                                <Link to={`/Detail/${(item.url)?.substring(34,(item.url).length-1)}`}>
                                     <Button sx={{width: "100%"}}>{item.name}</Button>
                                 </Link>
                                 </Card>
@@ -78,7 +77,10 @@ const Home = () => {
                 })}
                 </Grid>
             </Box>
-            
+            <Pagination sx={{marginBottom: "20px"}} count={Math.ceil((Data?.count||0)/20)} onChange={function(e,page) {
+                setId(20*(page-1))
+
+            }}></Pagination>
         </div>
         
     )
