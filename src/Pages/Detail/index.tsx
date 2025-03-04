@@ -3,6 +3,7 @@ import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import GetPokemonDetail from "../../Api/GetPokemonDetail";
 
 type data = {
     moves: [{
@@ -17,21 +18,20 @@ type data = {
 }
 
 const Detail = () => {
-    const { id } = useParams();
-    
+    const {id} = useParams();
     const [Data, setData] = useState<data>();
-    const fetchInfo = () => {
-        return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-          .then((res) => res.json())
-          .then((d) => setData(d))
-    }
+    const {error,isLoading,data} = GetPokemonDetail(id!)
+
+    // const fetchInfo = () => {
+    //     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    //       .then((res) => res.json())
+    //       .then((d) => setData(d))
+    // }
 
     useEffect(() => {
-        if (!Data) {
-            fetchInfo();
-        }
-        
-    });
+        setData(data)
+    },[error,isLoading,data]);
+
     console.log(Data)
     return (
         <div className="container" 
