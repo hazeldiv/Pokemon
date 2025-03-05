@@ -3,15 +3,15 @@ import Grid from "@mui/material/Grid"
 import PokemonCard from "./PokemonCard"
 import { item } from "../Pages/Home"
 
-interface PokemonListProps {
+interface PokemonListProp {
     Data: [item]
 }
 
-const PokemonList = ({Data}:PokemonListProps) => {
+const PokemonList = ({Data}:PokemonListProp) => {
     return (
         <Box sx={{ flexGrow: 1, padding: 10 }}>
             <Grid container spacing={4}>
-                {Data?.map((item, index) => {
+                {Data?.map((item) => {
                     return (
                         <Grid item>
                             <PokemonCard item={item}/>

@@ -1,7 +1,6 @@
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
-import Grid from "@mui/material/Grid"
 import { Link } from "react-router-dom"
 import { item } from "../Pages/Home"
 
@@ -16,7 +15,8 @@ const PokemonCard = ({item}:PokemonCardProp) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "10px"
+                gap: "10px",
+                width: "250px"
             }
         }>
             <Card  sx={{width: "100%", borderRadius: "30px"}}>
