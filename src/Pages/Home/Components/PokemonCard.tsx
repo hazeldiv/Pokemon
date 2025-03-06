@@ -13,15 +13,13 @@ const PokemonCard = ({item}:{item: PokemonCardProp}) => {
                 alignItems: "center",
                 gap: "10px",
                 width: "250px"
-            }
-        }>
+            }}>
             <Card  sx={{width: "100%", borderRadius: "30px"}}>
                 <CardMedia
                     component="img"
                     height="250px"
                     image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(item.url)?.substring(34,(item.url).length-1)}.png`}
-                >
-                </CardMedia>
+                    />
             </Card>
             <Card sx={{width: "100%", outline: "1px gray solid"}}>
                 <Link to={`/Detail/${(item.url)?.substring(34,(item.url).length-1)}`}>

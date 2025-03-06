@@ -4,7 +4,13 @@ import { DetailData } from "../../../Api/Entity/DetailDataProp"
 
 const PokemonDetailStat = ({Data}:{Data : DetailData}) => {
     return (
-        <Card sx={{width: "380px", padding: "20px", display: "flex", flexDirection: "column", gap: "10px"}}>
+        <Card sx={{
+            width: "380px", 
+            padding: "20px", 
+            display: "flex", 
+            flexDirection: "column", 
+            gap: "10px"
+            }}>
             <Typography variant="h5">Pokedex ID: {Data?.id}</Typography>
             <Typography variant="h5">Height: {Data?.height}</Typography>
             <Typography variant="h5">Weight: {Data?.weight}</Typography>
@@ -14,10 +20,7 @@ const PokemonDetailStat = ({Data}:{Data : DetailData}) => {
                     return null
                 }
                 return (
-                    <Card sx={{
-                        textAlign: "center",
-                        padding: "15px"
-                    }}>
+                    <Card sx={{textAlign: "center", padding: "15px"}}>
                         {item.move.name}
                     </Card>
                 )

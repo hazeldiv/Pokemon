@@ -20,7 +20,13 @@ const Detail = () => {
 
     return (
         
-        <div className="container" >
+        <div className="container" style={
+            {
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginTop: "20px",
+            }}>
             {
                 isLoading? (
                     <CircularProgress/>
@@ -49,8 +55,6 @@ const Detail = () => {
                     </div>
                 )
             }
-            
-            
         </div>
     )
     

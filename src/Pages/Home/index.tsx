@@ -13,7 +13,6 @@ const Home = () => {
     const [Error, setError] = useState(false)
     const [isLoading, setLoading] = useState(true)
     const {error, data} = GetPokemon(id)
-    
     useEffect(() => {
         setError(error)
         setData(data)
@@ -23,15 +22,13 @@ const Home = () => {
     },[id,error,data]);
 
     return (
-        <div className="container" 
-        style={
+        <div className="container" style={
             {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 marginTop: "20px"
-            }
-        }>
+            }}>
             <Typography variant="h2">
                 List Pokemon
             </Typography>
@@ -43,10 +40,10 @@ const Home = () => {
                 )
             }
             <Pagination sx={{marginBottom: "20px"}} count={Math.ceil((Data?.count||0)/20)} onChange={function(e,page) {
+                setLoading(false)
                 setId(20*(page-1))
             }}></Pagination>
         </div>
-        
     )
 }
   
