@@ -1,11 +1,10 @@
-import Card from "@mui/material/Card"
-import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import GetPokemonDetail from "../../Api/GetPokemonDetail";
 import PokemonDetailImage from "../../Components/PokemonDetailImage";
 import PokemonDetailStat from "../../Components/PokemonDetailStat";
+import { CircularProgress } from "@mui/material";
 
 interface move {
     move : {
@@ -26,17 +25,12 @@ const Detail = () => {
     const [Data, setData] = useState<DetailData>();
     const {error,isLoading,data} = GetPokemonDetail(id!)
 
-    // const fetchInfo = () => {
-    //     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    //       .then((res) => res.json())
-    //       .then((d) => setData(d))
-    // }
-
     useEffect(() => {
         setData(data)
     },[error,isLoading,data]);
 
     return (
+        
         <div className="container" 
             style={
                 {
@@ -57,7 +51,13 @@ const Detail = () => {
                 }
             }>
                 <PokemonDetailImage id={id!}/>
-                <PokemonDetailStat Data={Data!}/>
+                {
+                    isLoading? (
+                        <CircularProgress/>
+                    ) : Data && (
+                        <PokemonDetailStat Data={Data!}/>
+                    )
+                }
             </div>
         </div>
     )
