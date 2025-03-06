@@ -10,7 +10,7 @@ const PokemonDetailStat = ({Data}:{Data : DetailData}) => {
             <Typography variant="h5">Weight: {Data?.weight}</Typography>
             <Typography variant="h5" sx={{marginTop: "50px"}}>Move:</Typography>
             {Data?.moves.map((item, index) => {
-                if (index>=2) {
+                if (index>=3) {
                     return null
                 }
                 return (
