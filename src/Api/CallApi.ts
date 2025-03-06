@@ -3,11 +3,9 @@ import { useEffect, useState } from "react"
 
 const useApi = (url: string) => {
     const [error, setError] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState()
     useEffect(() => {
         const getData = async () => {
-            setIsLoading(true)
             try {
                 setError(false)
                 const response = await axios.get(url);
@@ -16,12 +14,11 @@ const useApi = (url: string) => {
                 setError(true)
                 console.error(error);
             }
-            setIsLoading(false)
         }
         getData()
     }, [url]);
 
-    return {error,isLoading,data}
+    return {error,data}
 }
 
 export default useApi

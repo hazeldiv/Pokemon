@@ -1,9 +1,9 @@
-import useApi from "./useApi"
+import CallApi from "./CallApi"
 
 const GetPokemonDetail = (id:string) => {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}`
-    const {error,isLoading,data} = useApi(url)
-    return {error,isLoading,data}
+    const {error,data} = CallApi(url)
+    return {error,data}
 }
 
 export default GetPokemonDetail

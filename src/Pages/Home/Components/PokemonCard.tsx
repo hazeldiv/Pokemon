@@ -2,13 +2,9 @@ import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
 import { Link } from "react-router-dom"
-import { item } from "../Pages/Home"
+import { PokemonCardProp } from "../../../Api/Entity/PokemonCardProp"
 
-interface PokemonCardProp {
-    item : item
-}
-
-const PokemonCard = ({item}:PokemonCardProp) => {
+const PokemonCard = ({item}:{item: PokemonCardProp}) => {
     return (
         <div style={
             {

@@ -1,12 +1,8 @@
 import Card from "@mui/material/Card"
 import Typography from "@mui/material/Typography"
-import { DetailData } from "../Pages/Detail"
+import { DetailData } from "../../../Api/Entity/DetailDataProp"
 
-interface PokemonDetailStatProp {
-    Data : DetailData
-}
-
-const PokemonDetailStat = ({Data}:PokemonDetailStatProp) => {
+const PokemonDetailStat = ({Data}:{Data : DetailData}) => {
     return (
         <Card sx={{width: "380px", padding: "20px", display: "flex", flexDirection: "column", gap: "10px"}}>
             <Typography variant="h5">Pokedex ID: {Data?.id}</Typography>

@@ -1,36 +1,26 @@
 import { useEffect, useState } from "react"
 import Typography from '@mui/material/Typography';
 import Pagination from "@mui/material/Pagination";
-import PokemonList from "../../Components/PokemonList";
+import PokemonList from "./Components/PokemonList";
 import GetPokemon from "../../Api/GetPokemon";
 import CircularProgress from "@mui/material/CircularProgress";
+import { PokemonListProp } from "../../Api/Entity/PokemonListProp";
 
-export interface item {
-    name: string,
-    url: string,
-}
-
-interface data {
-    count: number,
-    next: string,
-    results: [item],
-}
 
 const Home = () => {
     const [id, setId] = useState(0)
-    const [Data, setData] = useState<data>();
+    const [Data, setData] = useState<PokemonListProp>();
+    const [Error, setError] = useState(false)
+    const [isLoading, setLoading] = useState(true)
+    const {error, data} = GetPokemon(id)
     
-    const {error,isLoading,data} = GetPokemon(id)
-
-    // const fetchInfo = () => {
-    //     return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${id}&limit=20`)
-    //       .then((res) => res.json())
-    //       .then((d) => setData(d))
-    // }
-
     useEffect(() => {
+        setError(error)
         setData(data)
-    },[error,isLoading,data]);
+        if (data) {
+            setLoading(false)
+        }
+    },[id,error,data]);
 
     return (
         <div className="container" 

@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import PokemonCard from "./PokemonCard"
-import { item } from "../Pages/Home"
+import { PokemonCardProp } from "../../../Api/Entity/PokemonCardProp"
 
 interface PokemonListProp {
-    Data: [item]
+    Data: PokemonCardProp[]
 }
 
 const PokemonList = ({Data}:PokemonListProp) => {
