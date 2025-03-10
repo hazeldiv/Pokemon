@@ -1,4 +1,4 @@
-export interface move {
+export interface MoveProp {
     move : {
         name: string
     }

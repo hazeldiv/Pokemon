@@ -5,18 +5,18 @@ import GetPokemonDetail from "../../Api/GetPokemonDetail";
 import PokemonDetailImage from "./Components/PokemonDetailImage";
 import PokemonDetailStat from "./Components/PokemonDetailStat";
 import { CircularProgress } from "@mui/material";
-import { DetailData } from "../../Api/Entity/DetailDataProp";
+import { DetailDataProp } from "../../Api/Entity/DetailDataProp";
 
 const Detail = () => {
     const {id} = useParams();
-    const [Data, setData] = useState<DetailData>();
+    const [Data, setData] = useState<DetailDataProp>();
     const [isLoading, setLoading] = useState(true)
     const [isError, setErorr] = useState(false)
     const {error,data} = GetPokemonDetail(id!)
 
     useEffect(() => {
         setErorr(error)
-        if (data) {
+        if (data && !Data) {
             setData(data)
             setLoading(false)
         }

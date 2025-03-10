@@ -1,7 +1,7 @@
-import { move } from "./PokemonMoveprop";
+import { MoveProp } from "./PokemonMoveprop";
 
-export interface DetailData {
-    moves: move[]
+export interface DetailDataProp {
+    moves: MoveProp[]
     weight: number,
     height: number,
     id: number,

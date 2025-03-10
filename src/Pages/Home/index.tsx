@@ -13,9 +13,10 @@ const Home = () => {
     const [isError, setError] = useState(false)
     const [isLoading, setLoading] = useState(true)
     const {error, data} = GetPokemon(id)
+    
     useEffect(() => {
         setError(error)
-        if (data) {
+        if (data && !Data) {
             setData(data)
             setLoading(false)
         }

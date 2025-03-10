@@ -1,8 +1,8 @@
 import Card from "@mui/material/Card"
 import Typography from "@mui/material/Typography"
-import { DetailData } from "../../../Api/Entity/DetailDataProp"
+import { DetailDataProp } from "../../../Api/Entity/DetailDataProp"
 
-const PokemonDetailStat = ({Data}:{Data : DetailData}) => {
+const PokemonDetailStat = ({Data}:{Data : DetailDataProp}) => {
     return (
         <Card sx={{
             width: "380px", 
