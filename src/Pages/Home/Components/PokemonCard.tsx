@@ -4,7 +4,7 @@ import CardMedia from "@mui/material/CardMedia"
 import { Link } from "react-router-dom"
 import { PokemonCardProp } from "../../../Api/Entity/PokemonCardProp"
 
-const PokemonCard = ({item}:{item: PokemonCardProp}) => {
+const PokemonCard = ({Data}:{Data: PokemonCardProp}) => {
     return (
         <div style={
             {
@@ -18,12 +18,12 @@ const PokemonCard = ({item}:{item: PokemonCardProp}) => {
                 <CardMedia
                     component="img"
                     height="250px"
-                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(item.url)?.substring(34,(item.url).length-1)}.png`}
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(Data.url)?.substring(34,(Data.url).length-1)}.png`}
                     />
             </Card>
             <Card sx={{width: "100%", outline: "1px gray solid"}}>
-                <Link to={`/Detail/${(item.url)?.substring(34,(item.url).length-1)}`}>
-                    <Button sx={{width: "100%"}}>{item.name}</Button>
+                <Link to={`/Detail/${(Data.url)?.substring(34,(Data.url).length-1)}`}>
+                    <Button sx={{width: "100%"}}>{Data.name}</Button>
                 </Link>
             </Card>
         </div>

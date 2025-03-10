@@ -11,11 +11,15 @@ const Detail = () => {
     const {id} = useParams();
     const [Data, setData] = useState<DetailData>();
     const [isLoading, setLoading] = useState(true)
+    const [isError, setErorr] = useState(false)
     const {error,data} = GetPokemonDetail(id!)
 
     useEffect(() => {
-        setData(data)
-        setLoading(false)
+        setErorr(error)
+        if (data) {
+            setData(data)
+            setLoading(false)
+        }
     },[error,data]);
 
     return (
@@ -30,6 +34,8 @@ const Detail = () => {
             {
                 isLoading? (
                     <CircularProgress/>
+                ) : isError? (
+                    <Typography variant="h2">Error</Typography>
                 ) : Data && (
                     <div style={
                         {

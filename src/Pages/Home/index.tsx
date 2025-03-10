@@ -10,13 +10,13 @@ import { PokemonListProp } from "../../Api/Entity/PokemonListProp";
 const Home = () => {
     const [id, setId] = useState(0)
     const [Data, setData] = useState<PokemonListProp>();
-    const [Error, setError] = useState(false)
+    const [isError, setError] = useState(false)
     const [isLoading, setLoading] = useState(true)
     const {error, data} = GetPokemon(id)
     useEffect(() => {
         setError(error)
-        setData(data)
         if (data) {
+            setData(data)
             setLoading(false)
         }
     },[id,error,data]);
@@ -35,11 +35,14 @@ const Home = () => {
             {
                 isLoading? (
                     <CircularProgress/>
+                ) : isError ? (
+                    <Typography variant="h2">Error</Typography>
                 ) : Data && (
                     <PokemonList Data={Data?.results!}/>
                 )
             }
             <Pagination sx={{marginBottom: "20px"}} count={Math.ceil((Data?.count||0)/20)} onChange={function(e,page) {
+                setData(undefined)
                 setLoading(false)
                 setId(20*(page-1))
             }}></Pagination>
