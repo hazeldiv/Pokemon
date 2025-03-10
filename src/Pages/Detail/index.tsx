@@ -16,7 +16,7 @@ const Detail = () => {
 
     useEffect(() => {
         setErorr(error)
-        if (data && !Data) {
+        if (data) {
             setData(data)
             setLoading(false)
         }

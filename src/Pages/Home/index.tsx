@@ -13,10 +13,10 @@ const Home = () => {
     const [isError, setError] = useState(false)
     const [isLoading, setLoading] = useState(true)
     const {error, data} = GetPokemon(id)
-    
+
     useEffect(() => {
         setError(error)
-        if (data && !Data) {
+        if (data) {
             setData(data)
             setLoading(false)
         }
@@ -43,7 +43,6 @@ const Home = () => {
                 )
             }
             <Pagination sx={{marginBottom: "20px"}} count={Math.ceil((Data?.count||0)/20)} onChange={function(e,page) {
-                setData(undefined)
                 setLoading(false)
                 setId(20*(page-1))
             }}></Pagination>
